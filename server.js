@@ -1,14 +1,9 @@
-const express = require('express');
-const app = express();
+var express = require('express');
+var app = express();
 require('dotenv').config();
-const PORT = process.env.PORT;
-
-const routes = require('./routes');
-
-
-app.use(express.urlencoded({extended: false}));
+var PORT = process.env.PORT;
+var routes = require('./routes');
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-app.use('api/v1/auth', routes.auth);
-
-app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
+app.use('/api/v1/auth', routes.auth);
+app.listen(PORT, function () { return console.log("Server is running on port: ".concat(PORT)); });

@@ -1,6 +1,4 @@
-const router = require('express').Router();
-const ctrl = require('../controllers');
-
+var router = require('express').Router();
+var ctrl = require('../controllers');
 router.post('/register', ctrl.auth.register);
-
 module.exports = router;

@@ -1,5 +1,5 @@
-var mongooseUser = require('mongoose');
-var Schema = mongooseUser.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var userSchema = new Schema({
     name: {
         type: String,
@@ -24,5 +24,5 @@ var userSchema = new Schema({
             protein: Number
         }]
 });
-var User = mongooseUser.model('User', userSchema);
+var User = mongoose.model('User', userSchema);
 module.exports = User;
