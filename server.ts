@@ -10,5 +10,6 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 app.use('/api/v1/auth', routes.auth);
+app.use('/api/v1/user', routes.user);
 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));

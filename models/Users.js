@@ -16,7 +16,9 @@ var userSchema = new Schema({
         required: [true, 'Password is required']
     },
     food: [{
+            id: Number,
             date: String,
+            meal: String,
             name: String,
             calories: String,
             carbs: Number,
