@@ -1,8 +1,14 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
 require('dotenv').config();
 var PORT = process.env.PORT;
 var routes = require('./routes');
+app.use(cors({
+    origin: 'https://localhost:4200',
+    methods: 'GET,POST,PUT,DELETE',
+    optionSuccessStatus: 200
+}));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use('/api/v1/auth', routes.auth);
