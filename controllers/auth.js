@@ -103,6 +103,39 @@ var register = function (req, res) { return __awaiter(_this, void 0, void 0, fun
         }
     });
 }); };
+var login = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+    var foundUser, isMatch, payload, secret, expiration, token, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                return [4 /*yield*/, db.User.findOne({ email: req.body.email })];
+            case 1:
+                foundUser = _a.sent();
+                if (!foundUser) {
+                    return [2 /*return*/, res.status(400).json({ message: 'Email or password is incorrect' })];
+                }
+                return [4 /*yield*/, bcrypt.compare(req.body.password, foundUser.password)];
+            case 2:
+                isMatch = _a.sent();
+                if (!isMatch) {
+                    return [2 /*return*/, res.status(400).json({ message: 'Email or password is incorrect' })];
+                }
+                payload = { id: foundUser._id };
+                secret = process.env.JWT_SECRET;
+                expiration = { expiresIn: '1hr' };
+                token = jwt.sign(payload, secret, expiration);
+                res.status(200).json({ token: token });
+                return [3 /*break*/, 4];
+            case 3:
+                err_2 = _a.sent();
+                console.log(err_2);
+                return [2 /*return*/, res.status(500).json({ message: 'Something went wrong' })];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
 module.exports = {
-    register: register
+    register: register,
+    login: login
 };

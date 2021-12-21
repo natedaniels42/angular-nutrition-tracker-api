@@ -52,6 +52,34 @@ const register = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    try {
+        const foundUser = await db.User.findOne({ email: req.body.email });
+
+        if (!foundUser) {
+            return res.status(400).json({message: 'Email or password is incorrect'});
+        }
+
+        const isMatch = await bcrypt.compare(req.body.password, foundUser.password);
+
+        if (!isMatch) {
+            return res.status(400).json({message: 'Email or password is incorrect'});
+        }
+
+        const payload = {id: foundUser._id};
+        const secret = process.env.JWT_SECRET;
+        const expiration = {expiresIn: '1hr'};
+        const token = jwt.sign(payload, secret, expiration);
+
+        res.status(200).json({token});
+    } catch (err) {
+        console.log(err);
+
+        return res.status(500).json({message: 'Something went wrong'});
+    }
+}
+
 module.exports = {
     register,
+    login
 }
