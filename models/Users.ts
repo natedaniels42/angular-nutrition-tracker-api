@@ -23,7 +23,8 @@ const userSchema = new Schema({
         calories: String,
         carbs: Number,
         fat: Number,
-        protein: Number
+        protein: Number,
+        image: String
     }]
 })
 

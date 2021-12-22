@@ -13,7 +13,7 @@ const addFood = (req, res) => {
 
         if (err) console.log(err);
 
-        foundUser.food.push({name: req.params.food, date: req.params.date});
+        foundUser.food.push(req.body);
         foundUser.save((err, savedUser) => {
             if (err) console.log(err);
 

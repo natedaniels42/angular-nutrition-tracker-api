@@ -10,7 +10,7 @@ var addFood = function (req, res) {
     userDb.User.findById(req.params.userid, function (err, foundUser) {
         if (err)
             console.log(err);
-        foundUser.food.push({ name: req.params.food, date: req.params.date });
+        foundUser.food.push(req.body);
         foundUser.save(function (err, savedUser) {
             if (err)
                 console.log(err);
