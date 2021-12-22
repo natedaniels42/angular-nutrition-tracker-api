@@ -16,14 +16,14 @@ var userSchema = new Schema({
         required: [true, 'Password is required']
     },
     food: [{
-            id: Number,
             date: String,
             meal: String,
             name: String,
-            calories: String,
+            calories: Number,
             carbs: Number,
             fat: Number,
-            protein: Number
+            protein: Number,
+            image: String
         }]
 });
 var User = mongooseUser.model('User', userSchema);

@@ -20,7 +20,7 @@ const userSchema = new Schema({
         date: String,
         meal: String,
         name: String,
-        calories: String,
+        calories: Number,
         carbs: Number,
         fat: Number,
         protein: Number,

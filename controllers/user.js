@@ -7,6 +7,7 @@ var getUser = function (req, res) {
     });
 };
 var addFood = function (req, res) {
+    console.log(req.body);
     userDb.User.findById(req.params.userid, function (err, foundUser) {
         if (err)
             console.log(err);

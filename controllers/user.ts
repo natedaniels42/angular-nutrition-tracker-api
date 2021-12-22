@@ -9,6 +9,7 @@ const getUser = (req, res) => {
 }
 
 const addFood = (req, res) => {
+    console.log(req.body);
     userDb.User.findById(req.params.userid, (err, foundUser) => {
 
         if (err) console.log(err);
