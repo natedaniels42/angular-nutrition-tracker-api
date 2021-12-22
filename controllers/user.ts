@@ -1,5 +1,13 @@
 const userDb = require('../models');
 
+const getUser = (req, res) => {
+    userDb.User.findById(req.params.id, (err: Error, foundUser) => {
+        if (err) console.log(err);
+
+        res.status(200).json(foundUser);
+    })
+}
+
 const addFood = (req, res) => {
     userDb.User.findById(req.params.userid, (err, foundUser) => {
 
@@ -30,6 +38,7 @@ const removeFood = (req, res) => {
 }
 
 module.exports = {
+    getUser,
     addFood,
     removeFood
 }

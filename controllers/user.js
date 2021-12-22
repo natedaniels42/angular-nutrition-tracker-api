@@ -1,4 +1,11 @@
 var userDb = require('../models');
+var getUser = function (req, res) {
+    userDb.User.findById(req.params.id, function (err, foundUser) {
+        if (err)
+            console.log(err);
+        res.status(200).json(foundUser);
+    });
+};
 var addFood = function (req, res) {
     userDb.User.findById(req.params.userid, function (err, foundUser) {
         if (err)
@@ -26,6 +33,7 @@ var removeFood = function (req, res) {
     });
 };
 module.exports = {
+    getUser: getUser,
     addFood: addFood,
     removeFood: removeFood
 };

@@ -7,7 +7,7 @@ const PORT = process.env.PORT;
 const routes = require('./routes');
 
 app.use(cors({
-    origin: 'https://localhost:4200',
+    origin: 'http://localhost:4200',
     methods: 'GET,POST,PUT,DELETE',
     optionSuccessStatus: 200
 }))
