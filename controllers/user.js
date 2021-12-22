@@ -24,7 +24,7 @@ var removeFood = function (req, res) {
         if (err)
             console.log(err);
         foundUser.food = foundUser.food.filter(function (food) {
-            food.name !== req.params.food && food.date !== req.params.date;
+            return food.name !== req.body.name || food.date !== req.body.date || food.meal !== req.body.meal;
         });
         foundUser.save(function (err, savedUser) {
             if (err)
