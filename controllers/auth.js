@@ -64,7 +64,10 @@ var register = function (req, res) { return __awaiter(_this, void 0, void 0, fun
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                if (!req.body.name || !req.body.email || !req.body.password) {
+                if (!req.body.name || !req.body.email
+                    || !req.body.password || !req.body.dailyCalorieGoal
+                    || !req.body.dailyCarbGoal || !req.body.dailyFatGoal
+                    || !req.body.dailyProteinGoal) {
                     return [2 /*return*/, res.status(400).json({ message: 'All fields are required' })];
                 }
                 if (req.body.password.length < 8 || req.body.password.length > 16) {
@@ -83,7 +86,7 @@ var register = function (req, res) { return __awaiter(_this, void 0, void 0, fun
             case 2:
                 foundUser = _a.sent();
                 if (foundUser) {
-                    res.status(400).json({ message: 'Email address is already registered' });
+                    return [2 /*return*/, res.status(400).json({ message: 'Email address is already registered' })];
                 }
                 return [4 /*yield*/, bcrypt.genSalt(10)];
             case 3:

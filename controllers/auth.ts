@@ -38,7 +38,7 @@ const register = async (req, res) => {
         const foundUser = await db.User.findOne({ email: req.body.email });
 
         if (foundUser) {
-            res.status(400).json({message: 'Email address is already registered'})
+            return res.status(400).json({message: 'Email address is already registered'})
         }
 
         const salt = await bcrypt.genSalt(10);

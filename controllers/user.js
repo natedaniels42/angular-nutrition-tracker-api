@@ -15,7 +15,7 @@ var addFood = function (req, res) {
         foundUser.save(function (err, savedUser) {
             if (err)
                 console.log(err);
-            res.status(200).json(savedUser);
+            return res.status(200).json(savedUser);
         });
     });
 };
