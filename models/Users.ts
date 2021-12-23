@@ -16,6 +16,22 @@ const userSchema = new Schema({
         minlength: 8,
         required: [true, 'Password is required']
     },
+    dailyCalorieGoal: {
+        type: Number,
+        required: [true, 'Daily Calorie Goal is required']
+    },
+    dailyCarbGoal: {
+        type: Number,
+        required: [true, 'Daily Carb Goal is required']
+    },
+    dailyFatGoal: {
+        type: Number,
+        required: [true, 'Daily Fat Goal is required']
+    },
+    dailyProteinGoal: {
+        type: Number,
+        required: [true, 'Daily Protein Goal is required']
+    },
     food: [{
         date: String,
         meal: String,
